@@ -1,24 +1,35 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
+import { useTheme } from '../../../theme/themeProvider';
+import { createActivityStyles } from './styles';
+import { SPACING } from '../../../utils/spacing';
 
-export default function Activity() {
+
+const activities = [
+  { id: 1, type: 'expense', description: 'Hotel ₹1200 paid by Alice', time: '2h ago' },
+  { id: 2, type: 'settlement', description: 'Bob settled ₹500', time: '1h ago' },
+];
+
+const Activity = () => {
+  const { colors } = useTheme();
+  const styles = createActivityStyles(colors);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Activity Screen</Text>
-      <Text>Your recent activity logs appear here.</Text>
+      <Text style={styles.title}>Activity</Text>
+
+      <FlatList
+        data={activities}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={{ borderRadius: SPACING.sm, marginVertical: SPACING.lg }}>
+            <Text style={styles.description}>{item.description}</Text>
+            <Text style={styles.timestamp}>{item.time}</Text>
+          </View>
+        )}
+      />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '700',
-    marginBottom: 10,
-  },
-});
+export default Activity;
