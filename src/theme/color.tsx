@@ -22,4 +22,4 @@ export const darkColors = {
   divider: '#374151',
 } as const;
 
-export const COLORS = lightColors; 
+export const COLORS = lightColors;
