@@ -22,7 +22,7 @@ export const createHomeStyles = (colors: any) =>
     notification: { fontSize: FONT_SIZE.lg },
 
     balanceCard: {
-      borderRadius: 24,
+      borderRadius: SPACING.lg,
       padding: SPACING.lg,
       marginBottom: SPACING.md,
       elevation: 4,
@@ -37,7 +37,6 @@ export const createHomeStyles = (colors: any) =>
     balanceRow: { flexDirection: 'row', justifyContent: 'space-between', marginTop: SPACING.md },
     smallLabel: { color: '#fff', fontSize: FONT_SIZE.xs },
     smallAmount: { color: '#fff', fontWeight: FONT_WEIGHT.bold, fontSize: FONT_SIZE.sm },
-
     transactionHeader: {
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -51,21 +50,58 @@ export const createHomeStyles = (colors: any) =>
     },
     seeAll: { color: colors.primary, fontSize: FONT_SIZE.sm },
 
-    transactionItem: {
+    topBar: {
       flexDirection: 'row',
       alignItems: 'center',
-      backgroundColor: colors.card,
-      padding: SPACING.md,
-      borderRadius: 16,
-      marginBottom: SPACING.sm,
-      elevation: 2,
+      // paddingHorizontal: SPACING.lg,
+      paddingBottom: SPACING.md,
+      justifyContent: 'space-between',
     },
-    transactionIcon: { width: moderateScale(40), height: moderateScale(40), borderRadius: 12 },
-    transactionName: {
+
+    profileImage: {
+      width: 42,
+      height: 42,
+      borderRadius: 21,
+      borderWidth: 2,
+      borderColor: colors.primary,
+    },
+
+    centerTitle: {
+      flex: 1,
+      alignItems: 'center',
+    },
+
+    title: {
       fontSize: FONT_SIZE.md,
       fontWeight: FONT_WEIGHT.semiBold,
       color: colors.textPrimary,
     },
-    transactionTime: { fontSize: FONT_SIZE.sm, color: colors.textSecondary },
-    transactionAmount: { fontSize: FONT_SIZE.md, fontWeight: FONT_WEIGHT.bold },
+
+    subTitle: {
+      fontSize: FONT_SIZE.xs,
+      color: colors.textSecondary,
+      marginTop: 2,
+    },
+
+    notificationBtn: {
+      width: 42,
+      height: 42,
+      borderRadius: 21,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    notificationIcon: {
+      fontSize: 20,
+    },
+
+    notificationDot: {
+      position: 'absolute',
+      top: 8,
+      right: 8,
+      width: 8,
+      height: 8,
+      borderRadius: 4,
+      backgroundColor: colors.danger,
+    },
   });

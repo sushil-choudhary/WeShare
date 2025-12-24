@@ -5,78 +5,51 @@ import { moderateScale } from '../../../utils/responsive';
 import { useTheme } from '../../../theme/themeProvider';
 import { createHomeStyles } from './styles';
 import LinearGradient from 'react-native-linear-gradient';
+import ExpenseGroupCard from '../../../common/Groups/Group';
+import { useNavigation } from '@react-navigation/native';
 
-interface Transaction {
-  id: number;
-  name: string;
-  time: string;
-  amount: number;
-  icon: any; // require or URL
-}
-
-const transactions: Transaction[] = [
+const groups = [
   {
-    id: 1,
-    name: 'Money Transfer',
-    time: '12:35 PM',
-    amount: -450,
-    icon: '',
+    id: '1',
+    title: 'Goa Trip 🏖',
+    members: 4,
+    balance: -500,
+    avatars: [
+      'https://i.pravatar.cc/100?img=1',
+      'https://i.pravatar.cc/100?img=2',
+      'https://i.pravatar.cc/100?img=3',
+    ],
   },
   {
-    id: 2,
-    name: 'Paypal',
-    time: '10:20 AM',
-    amount: 1200,
-    icon: '',
-  },
-  {
-    id: 3,
-    name: 'Uber',
-    time: '08:40 AM',
-    amount: -150,
-    icon: '',
-  },
-  {
-    id: 4,
-    name: 'Bata Store',
-    time: 'Yesterday',
-    amount: -200,
-    icon: '',
+    id: '2',
+    title: 'Flat Rent 🏠',
+    members: 3,
+    balance: 2200,
+    avatars: [
+      'https://i.pravatar.cc/100?img=4',
+      'https://i.pravatar.cc/100?img=5',
+      'https://i.pravatar.cc/100?img=6',
+    ],
   },
 ];
 
 const HomeScreen = () => {
   const { colors } = useTheme();
   const styles = createHomeStyles(colors);
-
-  const renderTransaction = ({ item }: { item: Transaction }) => {
-    const isPositive = item.amount >= 0;
-    return (
-      <View style={styles.transactionItem}>
-        <Image source={item.icon} style={styles.transactionIcon} />
-        <View style={{ flex: 1, marginLeft: moderateScale(12) }}>
-          <Text style={styles.transactionName}>{item.name}</Text>
-          <Text style={styles.transactionTime}>{item.time}</Text>
-        </View>
-        <Text
-          style={[styles.transactionAmount, { color: isPositive ? colors.success : colors.danger }]}
-        >
-          {isPositive ? `+${item.amount}` : `${item.amount}`}
-        </Text>
-      </View>
-    );
-  };
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      {/* 🔹 Header */}
-      <View style={styles.header}>
-        <TouchableOpacity>
-          <Text style={styles.menu}>☰</Text>
+      <View style={styles.topBar}>
+        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+          <Image source={{ uri: 'https://i.pravatar.cc/150?img=12' }} style={styles.profileImage} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Home</Text>
-        <TouchableOpacity>
-          <Text style={styles.notification}>🔔</Text>
+        <TouchableOpacity
+          // onPress={() => navigation.navigate('Notifications')}
+          style={styles.notificationBtn}
+        >
+          <Text style={styles.notificationIcon}>🔔</Text>
+          <View style={styles.notificationDot} />
         </TouchableOpacity>
       </View>
 
@@ -101,21 +74,33 @@ const HomeScreen = () => {
         </View>
       </LinearGradient>
       <View style={styles.transactionHeader}>
-        <Text style={styles.transactionTitle}>Transactions</Text>
+        <Text style={styles.transactionTitle}>Groups</Text>
         <TouchableOpacity>
           <Text style={styles.seeAll}>See All</Text>
         </TouchableOpacity>
       </View>
-
       <FlatList
-        data={transactions}
+        data={groups}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={renderTransaction}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: moderateScale(100) }}
+        contentContainerStyle={{ paddingBottom: 80 }}
+        renderItem={({ item }) => (
+          <ExpenseGroupCard
+            title={item.title}
+            members={item.members}
+            balance={item.balance}
+            avatars={item.avatars}
+            // onPress={() =>
+            //   navigation.navigate('GroupDetails', {
+            //     groupId: item.id,
+            //   })
+            // }
+          />
+        )}
       />
     </View>
   );
+  z;
 };
 
 export default HomeScreen;
