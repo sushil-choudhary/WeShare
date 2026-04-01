@@ -4,20 +4,28 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { styles } from './styles';
 
-export default function CustomBottomTab({ state, navigation }: any) {
+export default function CustomBottomTab({ state, navigation, descriptors }: any) {
   return (
     <View style={styles.wrapper}>
       <View style={styles.container}>
         {state.routes.map((route: any, index: number) => {
           const isFocused = state.index === index;
 
+          const onPress = () => {
+            const event = navigation.emit({
+              type: 'tabPress',
+              target: route.key,
+              canPreventDefault: true,
+            });
+
+            if (!event.defaultPrevented) {
+              navigation.navigate(route.name);
+            }
+          };
+
           if (route.name === 'Add') {
             return (
-              <TouchableOpacity
-                key={route.key}
-                style={styles.addButton}
-                onPress={() => navigation.navigate('Add')}
-              >
+              <TouchableOpacity key={route.key} style={styles.addButton} onPress={onPress}>
                 <Ionicons name="add" size={28} color="#fff" />
               </TouchableOpacity>
             );
@@ -40,11 +48,7 @@ export default function CustomBottomTab({ state, navigation }: any) {
           }
 
           return (
-            <TouchableOpacity
-              key={route.key}
-              style={styles.tab}
-              onPress={() => navigation.navigate(route.name)}
-            >
+            <TouchableOpacity key={route.key} style={styles.tab} onPress={onPress}>
               <Ionicons name={iconName} size={22} color={isFocused ? '#0F9D58' : '#777'} />
               <Text style={[styles.label, isFocused && styles.activeLabel]}>{route.name}</Text>
             </TouchableOpacity>

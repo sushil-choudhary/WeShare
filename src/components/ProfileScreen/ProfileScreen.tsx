@@ -3,8 +3,8 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { COLORS1, styles } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { formatCurrency } from '../../../utils/helpers';
-import { Account, Actions, Preferences, Records, Support } from '../../../utils/constant';
+import { formatCurrency } from '../../utils/helpers';
+import { Account, Actions, Preferences, Records, Support } from '../../utils/constant';
 
 const ProfileScreen = () => {
   return (

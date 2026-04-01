@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { SPACING } from '../../../utils/spacing';
+import { SPACING } from '../../utils/spacing';
 
 export const COLORS1 = {
   background: '#F7F9FB', // main screen background

@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '../../components/layout/Home/Home';
+import Home from '../../components/Home/Home';
 
 export default function HomeScreen() {
   return <Home />;

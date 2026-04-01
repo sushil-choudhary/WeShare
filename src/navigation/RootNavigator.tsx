@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './AuthStack';
-import BottomTabs from './BottomTabs';
+import AppStack from './AppStack';
 import { useAppSelector, useAppDispatch } from '../redux/hooks';
 import { setToken } from '../redux/slices/authSlice';
 import { getToken } from '../utils/storage';
@@ -19,7 +19,7 @@ export default function RootNavigator() {
     })();
   }, [dispatch]);
 
-  if (loading) return null; // add splash screen as needed
+  if (loading) return null;
 
-  return <NavigationContainer>{!token ? <BottomTabs /> : <AuthStack />}</NavigationContainer>;
+  return <NavigationContainer>{!token ? <AppStack /> : <AuthStack />}</NavigationContainer>;
 }

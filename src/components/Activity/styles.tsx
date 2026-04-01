@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { SPACING } from '../../../utils/spacing';
-import { FONT_SIZE, FONT_WEIGHT } from '../../../utils/typography';
+import { SPACING } from '../../utils/spacing';
+import { FONT_SIZE, FONT_WEIGHT } from '../../utils/typography';
 
 export const createActivityStyles = (colors: any) =>
   StyleSheet.create({

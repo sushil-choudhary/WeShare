@@ -8,7 +8,9 @@ export default function AuthStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Login" component={Login} />
-      {/* <Stack.Screen name="Register" component={Register} /> */}
+      {/* <Stack.Screen name="MainTabs" component={BottomTabs} options={{ headerShown: false }} />
+      <Stack.Screen name="AddExpense" component={AddExpenseContainer} />
+      <Stack.Screen name="AddGroup" component={AddGroupContainer} /> */}
     </Stack.Navigator>
   );
 }

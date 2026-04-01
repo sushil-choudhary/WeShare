@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 
-import { moderateScale } from '../../../utils/responsive';
-import { useTheme } from '../../../theme/themeProvider';
+import { useTheme } from '../../theme/themeProvider';
 import { createHomeStyles } from './styles';
 import LinearGradient from 'react-native-linear-gradient';
-import ExpenseGroupCard from '../../../common/Groups/Group';
+import ExpenseGroupCard from '../../common/Groups/Group';
 import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const groups = [
   {
@@ -39,7 +39,7 @@ const HomeScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
       <View style={styles.topBar}>
         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
           <Image source={{ uri: 'https://i.pravatar.cc/150?img=12' }} style={styles.profileImage} />
@@ -98,9 +98,8 @@ const HomeScreen = () => {
           />
         )}
       />
-    </View>
+    </SafeAreaView>
   );
-  z;
 };
 
 export default HomeScreen;

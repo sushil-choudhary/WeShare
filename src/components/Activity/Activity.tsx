@@ -1,21 +1,21 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { useTheme } from '../../../theme/themeProvider';
+import { useTheme } from '../../theme/themeProvider';
 import { createActivityStyles } from './styles';
-import { SPACING } from '../../../utils/spacing';
-
+import { SPACING } from '../../utils/spacing';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const activities = [
   { id: 1, type: 'expense', description: 'Hotel ₹1200 paid by Alice', time: '2h ago' },
   { id: 2, type: 'settlement', description: 'Bob settled ₹500', time: '1h ago' },
 ];
 
-const Activity = () => {
+const ActivityScreen = () => {
   const { colors } = useTheme();
   const styles = createActivityStyles(colors);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView edges={['top']} style={styles.container}>
       <Text style={styles.title}>Activity</Text>
 
       <FlatList
@@ -28,8 +28,8 @@ const Activity = () => {
           </View>
         )}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
-export default Activity;
+export default ActivityScreen;

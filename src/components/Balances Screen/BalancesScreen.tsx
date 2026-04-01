@@ -4,6 +4,7 @@ import { moderateScale } from '../../utils/responsive';
 import { Transaction } from '../../utils/interface';
 import { createBalancesStyles } from './styles';
 import { useTheme } from '../../theme/themeProvider';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const transactions: Transaction[] = [
   {
@@ -57,7 +58,7 @@ const BalancesScreen = () => {
     );
   };
   return (
-    <View style={styles.container}>
+    <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
       <Text style={styles.title}>Balances</Text>
 
       <FlatList
@@ -67,7 +68,7 @@ const BalancesScreen = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: moderateScale(100) }}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

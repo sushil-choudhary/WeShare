@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import { SPACING } from '../../../utils/spacing';
-import { FONT_SIZE, FONT_WEIGHT } from '../../../utils/typography';
-import { moderateScale } from '../../../utils/responsive';
+import { SPACING } from '../../utils/spacing';
+import { FONT_SIZE, FONT_WEIGHT } from '../../utils/typography';
+import { moderateScale } from '../../utils/responsive';
 
 export const createHomeStyles = (colors: any) =>
   StyleSheet.create({
