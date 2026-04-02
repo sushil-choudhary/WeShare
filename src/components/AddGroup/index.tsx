@@ -3,6 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-nativ
 import { createGroupStyles } from './styles';
 import { COLORS } from '../../theme/color';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { BackIcon } from '../../assets/svg/Svg';
+import { useNavigation } from '@react-navigation/native';
 
 const groupTypes = ['Trip', 'Home', 'Friends', 'Office', 'Other'];
 const splitTypes = ['Equal', 'Unequal', 'Percentage', 'Shares'];
@@ -12,7 +14,7 @@ const initialMembers = ['Rahul', 'Priya'];
 const CreateGroupScreen = () => {
   const colors = COLORS;
   const styles = createGroupStyles(colors);
-
+  const navigation = useNavigation();
   const [groupName, setGroupName] = useState('');
   const [groupType, setGroupType] = useState('Trip');
   const [currency, setCurrency] = useState('INR ₹');
@@ -47,15 +49,25 @@ const CreateGroupScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{flex:1}} edges={['top']}>
+    <SafeAreaView edges={['top']} style={styles.container}>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+          activeOpacity={0.6}
+        >
+          <BackIcon />
+        </TouchableOpacity>
+        <View style={styles.headerTextContainer}>
+          <Text style={styles.title}>Create Group</Text>
+          <Text style={styles.subtitle}>Track shared expenses with your group</Text>
+        </View>
+      </View>
       <ScrollView
-        style={styles.container}
+        style={{ flexGrow: 1 }}
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.title}>Create Group</Text>
-        <Text style={styles.subtitle}>Track shared expenses with your group</Text>
-
         <View style={styles.section}>
           <Text style={styles.label}>Group Name</Text>
           <TextInput
@@ -145,11 +157,10 @@ const CreateGroupScreen = () => {
             })}
           </View>
         </View>
-
-        <TouchableOpacity style={styles.primaryButton} onPress={handleCreateGroup}>
-          <Text style={styles.primaryButtonText}>Create Group</Text>
-        </TouchableOpacity>
       </ScrollView>
+      <TouchableOpacity style={styles.primaryButton} onPress={handleCreateGroup}>
+        <Text style={styles.primaryButtonText}>Create Group</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };

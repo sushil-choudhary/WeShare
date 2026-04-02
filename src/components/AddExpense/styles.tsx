@@ -13,6 +13,12 @@ export const createAddExpenseStyles = (colors: any) =>
     contentContainer: {
       flexGrow: 1,
     },
+    headerContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: SPACING.lg,
+    },
+    headerTextContainer: { marginLeft: SPACING.md },
     title: {
       fontSize: FONT_SIZE.title,
       fontWeight: FONT_WEIGHT.bold,
@@ -22,7 +28,6 @@ export const createAddExpenseStyles = (colors: any) =>
     subtitle: {
       fontSize: FONT_SIZE.md,
       color: colors.textSecondary,
-      marginBottom: SPACING.xl,
     },
     section: {
       marginBottom: SPACING.lg,
@@ -122,7 +127,7 @@ export const createAddExpenseStyles = (colors: any) =>
     },
     primaryButton: {
       backgroundColor: colors.primary,
-      borderRadius: SPACING.md,
+      borderRadius: SPACING.xxxl,
       paddingVertical: SPACING.md,
       alignItems: 'center',
       marginTop: SPACING.md,
@@ -131,5 +136,15 @@ export const createAddExpenseStyles = (colors: any) =>
       color: colors.card,
       fontSize: FONT_SIZE.lg,
       fontWeight: FONT_WEIGHT.bold,
+    },
+    backButton: {
+      width: 42,
+      height: 42,
+      borderRadius: 21,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.card,
+      borderWidth: 1,
+      borderColor: colors.divider,
     },
   });

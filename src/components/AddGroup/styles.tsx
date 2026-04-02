@@ -7,10 +7,11 @@ export const createGroupStyles = (colors: any) =>
     container: {
       flex: 1,
       backgroundColor: colors.bg,
-    },
-    contentContainer: {
       padding: SPACING.lg,
       paddingBottom: SPACING.xxxl,
+    },
+    contentContainer: {
+      flexGrow: 1,
     },
     title: {
       fontSize: FONT_SIZE.title,
@@ -21,7 +22,6 @@ export const createGroupStyles = (colors: any) =>
     subtitle: {
       fontSize: FONT_SIZE.md,
       color: colors.textSecondary,
-      marginBottom: SPACING.xl,
     },
     section: {
       marginBottom: SPACING.lg,
@@ -126,4 +126,20 @@ export const createGroupStyles = (colors: any) =>
       fontSize: FONT_SIZE.lg,
       fontWeight: FONT_WEIGHT.bold,
     },
+    headerContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: SPACING.lg,
+    },
+    backButton: {
+      width: 42,
+      height: 42,
+      borderRadius: 21,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: colors.card,
+      borderWidth: 1,
+      borderColor: colors.divider,
+    },
+    headerTextContainer: { marginLeft: SPACING.md },
   });

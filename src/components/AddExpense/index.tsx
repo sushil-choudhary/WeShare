@@ -3,6 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-nativ
 import { createAddExpenseStyles } from './styles';
 import { COLORS } from '../../theme/color';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { BackIcon } from '../../assets/svg/Svg';
+import { useNavigation } from '@react-navigation/native';
 
 const categories = ['Food', 'Travel', 'Stay', 'Shopping', 'Bills', 'Other'];
 const splitTypes = ['Equal', 'Unequal', 'Percentage', 'Shares'];
@@ -11,7 +13,7 @@ const membersList = ['You', 'Rahul', 'Priya', 'Aman'];
 const AddExpenseScreen = () => {
   const colors = COLORS;
   const styles = createAddExpenseStyles(colors);
-
+  const navigation = useNavigation();
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('Food');
@@ -54,8 +56,19 @@ const AddExpenseScreen = () => {
 
   return (
     <SafeAreaView edges={['top', 'bottom']} style={styles.container}>
-      <Text style={styles.title}>Add Expense</Text>
-      <Text style={styles.subtitle}>Record and split group spending</Text>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+          activeOpacity={0.6}
+        >
+          <BackIcon />
+        </TouchableOpacity>
+        <View style={styles.headerTextContainer}>
+          <Text style={styles.title}>Add Expense</Text>
+          <Text style={styles.subtitle}>Record and split group spending</Text>
+        </View>
+      </View>
       <ScrollView
         style={{ flexGrow: 1 }}
         contentContainerStyle={styles.contentContainer}
