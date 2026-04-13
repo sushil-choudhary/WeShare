@@ -31,3 +31,34 @@ export const Actions = [
   { label: 'Logout', icon: 'log-out-outline' },
   { label: 'Delete Account', icon: 'trash-outline' },
 ];
+
+export const STORAGE_KEYS = {
+  AUTH: 'auth_data',
+};
+
+export const TENANT_ID = 'X-CW-Tenant-Id';
+export const AUTHORIZATION = 'Authorization';
+
+export const MESSAGE_SEVERITIES = {
+  ERROR: 'error',
+  WARNING: 'warning',
+  INFO: 'info',
+  SUCCESS: 'success',
+};
+
+export const SLICE = {
+  LOGIN: 'loginSlice',
+  AUTH: 'auth',
+  USER: 'user',
+  CLIENTS: 'clients',
+  DIET_DATA: 'dietData',
+  ASSESMENTS: 'assesments',
+  APP: 'app',
+  HOME: 'home',
+  WORKOUT: 'workout',
+};
+
+export const ROUTES = {
+  SPLASH: 'SplashScreen',
+  LOGIN: 'Login',
+};

@@ -7,7 +7,7 @@ export const createHomeStyles = (colors: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: colors.bg,
+      backgroundColor: colors.BG,
       paddingHorizontal: SPACING.lg,
       paddingTop: SPACING.lg,
     },

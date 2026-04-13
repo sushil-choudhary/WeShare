@@ -9,7 +9,7 @@ export const createBalancesStyles = (colors: any) =>
     container: {
       flex: 1,
       padding: SPACING.lg,
-      backgroundColor: colors.bg,
+      backgroundColor: colors.BG,
     },
     title: {
       fontSize: FONT_SIZE.xl,

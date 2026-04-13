@@ -4,40 +4,64 @@ import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useAppDispatch } from '../../redux/hooks';
-import { login } from '../../redux/slices/authSlice';
-
-type LoginForm = {
-  email: string;
-  password: string;
-};
+import { RegisterPayload } from '../../types/auth.type';
 
 const schema = yup
   .object({
+    fullName: yup.string().required('Full name is required'),
+    phone: yup.string().required('Phone number is required'),
     email: yup.string().email('Invalid email').required('Email is required'),
     password: yup.string().min(6, 'Min 6 characters').required('Password is required'),
   })
   .required();
 
-export default function Login({ navigation }: any) {
-  const dispatch = useAppDispatch();
+export default function Register({ navigation, onSubmit }: any) {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginForm>({
+  } = useForm<RegisterPayload>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: LoginForm) => {
-    await dispatch(login({ identifier: data.email, password: data.password }));
-  };
-
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Register</Text>
 
-      {/* Email Field */}
+      <Controller
+        control={control}
+        name="fullName"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={styles.inputWrapper}>
+            <Text>Full Name</Text>
+            <TextInput
+              style={styles.input}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              placeholder="Enter your full name"
+            />
+            {errors.fullName && <Text style={styles.error}>{errors.fullName.message}</Text>}
+          </View>
+        )}
+      />
+      <Controller
+        control={control}
+        name="phone"
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={styles.inputWrapper}>
+            <Text>Phone</Text>
+            <TextInput
+              style={styles.input}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              placeholder="Enter your phone number"
+            />
+            {errors.phone && <Text style={styles.error}>{errors.phone.message}</Text>}
+          </View>
+        )}
+      />
       <Controller
         control={control}
         name="email"

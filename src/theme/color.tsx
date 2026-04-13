@@ -1,5 +1,5 @@
 export const lightColors = {
-  bg: '#F8FAFC',
+  BG: '#F8FAFC',
   card: '#FFFFFF',
   textPrimary: '#111827',
   textSecondary: '#6B7280',
@@ -8,10 +8,11 @@ export const lightColors = {
   danger: '#EF4444',
   muted: '#9CA3AF',
   divider: '#E5E7EB',
+  white: '#FFFFFF',
 } as const;
 
 export const darkColors = {
-  bg: '#111827',
+  BG: '#111827',
   card: '#1F2937',
   textPrimary: '#F9FAFB',
   textSecondary: '#9CA3AF',

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Config from 'react-native-config';
 
-const API_BASE_URL = Config.API_BASE_URL ?? 'https://api.example.com';
+const API_BASE_URL = Config.API_BASE_URL ?? 'https://splitwisebackend-production.up.railway.app/';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
