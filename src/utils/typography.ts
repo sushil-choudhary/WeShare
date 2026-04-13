@@ -7,7 +7,7 @@ export const FONT_SIZE = {
   lg: RF(16),
   xl: RF(18),
   xxl: RF(22),
-  title: RF(26),
+  title: RF(18),
   amount: RF(34),
 };
 

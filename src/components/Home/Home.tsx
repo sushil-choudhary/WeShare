@@ -85,16 +85,112 @@ const HomeScreen = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 80 }}
         renderItem={({ item }) => (
+          // <ExpenseGroupCard
+          //   title={item.title}
+          //   members={item.members}
+          //   balance={item.balance}
+          //   avatars={item.avatars}
+          //   // onPress={() =>
+          //   //   navigation.navigate('GroupDetails', {
+          //   //     groupId: item.id,
+          //   //   })
+          //   // }
+          // />
           <ExpenseGroupCard
-            title={item.title}
-            members={item.members}
-            balance={item.balance}
-            avatars={item.avatars}
-            // onPress={() =>
-            //   navigation.navigate('GroupDetails', {
-            //     groupId: item.id,
-            //   })
-            // }
+            title="Goa Trip"
+            members={4}
+            balance={1200}
+            avatars={[
+              'https://i.pravatar.cc/150?img=1',
+              'https://i.pravatar.cc/150?img=2',
+              'https://i.pravatar.cc/150?img=3',
+            ]}
+            onPress={() =>
+              navigation.navigate('GroupDetails', {
+                group: {
+                  id: '1',
+                  title: 'Goa Trip',
+                  members: [
+                    { id: '1', name: 'You', avatar: 'https://i.pravatar.cc/150?img=1' },
+                    { id: '2', name: 'Aman', avatar: 'https://i.pravatar.cc/150?img=2' },
+                    { id: '3', name: 'Neha', avatar: 'https://i.pravatar.cc/150?img=3' },
+                    { id: '4', name: 'Rohit', avatar: 'https://i.pravatar.cc/150?img=4' },
+                  ],
+                  summary: {
+                    totalExpense: 5400,
+                    yourPaid: 2200,
+                    yourShare: 1350,
+                    netBalance: 850,
+                  },
+                  settlements: [
+                    { id: '1', from: 'Aman', to: 'You', amount: 300 },
+                    { id: '2', from: 'You', to: 'Neha', amount: 500 },
+                    { id: '3', from: 'Rohit', to: 'Aman', amount: 200 },
+                  ],
+                  expenses: [
+                    {
+                      id: '1',
+                      title: 'Dinner',
+                      amount: 1200,
+                      paidBy: 'You',
+                      date: '29 Mar',
+                      category: 'food',
+                    },
+                    {
+                      id: '2',
+                      title: 'Cab Fare',
+                      amount: 800,
+                      paidBy: 'Aman',
+                      date: '30 Mar',
+                      category: 'travel',
+                    },
+                    {
+                      id: '3',
+                      title: 'Hotel Booking',
+                      amount: 3400,
+                      paidBy: 'Neha',
+                      date: '31 Mar',
+                      category: 'hotel',
+                    },
+                  ],
+                  contributions: [
+                    {
+                      id: '1',
+                      name: 'You',
+                      avatar: 'https://i.pravatar.cc/150?img=1',
+                      paid: 2200,
+                      share: 1350,
+                      balance: 850,
+                    },
+                    {
+                      id: '2',
+                      name: 'Aman',
+                      avatar: 'https://i.pravatar.cc/150?img=2',
+                      paid: 800,
+                      share: 1350,
+                      balance: -550,
+                    },
+                    {
+                      id: '3',
+                      name: 'Neha',
+                      avatar: 'https://i.pravatar.cc/150?img=3',
+                      paid: 3400,
+                      share: 1350,
+                      balance: 2050,
+                    },
+                    {
+                      id: '4',
+                      name: 'Rohit',
+                      avatar: 'https://i.pravatar.cc/150?img=4',
+                      paid: 0,
+                      share: 1350,
+                      balance: -1350,
+                    },
+                  ],
+                },
+              })
+            }
+
           />
         )}
       />
